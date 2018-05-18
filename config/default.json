@@ -1,0 +1,75 @@
+{
+  "host": "localhost",
+  "port": 3030,
+  "public": "../public/",
+  "paginate": {
+    "default": 10,
+    "max": 50
+  },
+  "mongodb": "mongodb://localhost:27017/juxer",
+  "authentication": {
+    "secret": "42d907ade3885cd4daa704f533c059ed2ead3fcc37482657c775b4e557832f0df081c03aca2c97b0b4f838e9c4fa5bce657e403cf3948bcdc795263ccf3747a9f1db97661df9c24f939791a0c838c6637ba2a2fa81e8211c722c4026724aa842c288e80f4d6c7ef3d76b854d06cae39bb908a0b5edabd80663cd4fbc9f136a48d5b694b813d562aae213353f457af90781c7686fd64d6842b8f22dbeab695e9314ce00f6cd03c56e1ebcead7c0e26d21e91d6d62d73a6b9391fd9b850e0d59cda8428dc54633b3764c26541e9026533352148f2c06d04846d24922f016a488512921103ecbaaf544717308b20cac1bf5312fcbd396f75fb98f18a0c18c6e2d3e",
+    "strategies": [
+      "jwt",
+      "local",
+      "facebook",
+      "spotify"
+    ],
+    "path": "/authentication",
+    "service": "users",
+    "jwt": {
+      "header": {
+        "typ": "access"
+      },
+      "audience": "https://yourdomain.com",
+      "subject": "anonymous",
+      "issuer": "feathers",
+      "algorithm": "HS256",
+      "expiresIn": "1d"
+    },
+    "local": {
+      "entity": "user",
+      "usernameField": "email",
+      "passwordField": "password"
+    },
+    "facebook": {
+      "clientID": "1582053262040144",
+      "clientSecret": "14a13e00c3224ba92ac6cef18d2f7e2e",
+      "successRedirect": "/",
+      "scope": [
+        "public_profile",
+        "email"
+      ],
+      "profileFields": [
+        "id",
+        "displayName",
+        "first_name",
+        "last_name",
+        "email",
+        "gender",
+        "profileUrl",
+        "birthday",
+        "picture",
+        "permissions"
+      ]
+    },
+    "spotify": {
+      "clientID": "84f3966b6522451686c303f5900fc12b",
+      "clientSecret": "e5588a2f50134b7ab9c350d679460916",
+      "successRedirect": "/",
+      "scope": [
+        "user-read-private",
+        "user-read-email",
+        "streaming",
+        "playlist-read-collaborative",
+        "playlist-read-private"
+      ]
+    },
+    "cookie": {
+      "enabled": true,
+      "name": "feathers-jwt",
+      "httpOnly": false,
+      "secure": false
+    }
+  }
+}
