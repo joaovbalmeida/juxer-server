@@ -1,5 +1,6 @@
 // npm deps
 const express = require('express');
+const logger = require('winston');
 const https = require('https');
 const crypto = require('crypto');
 const { URL } = require('url');
@@ -193,4 +194,4 @@ app.post('/refresh', async (req, res) => {
 
 // start server
 const spServerPort = process.env.PORT ? parseInt(process.env.PORT) : 3000;
-app.listen(spServerPort, () => console.log('Example app listening on port '+spServerPort+'!'));
+app.listen(spServerPort, () => logger.info('Example app listening on port '+spServerPort+'!'));
