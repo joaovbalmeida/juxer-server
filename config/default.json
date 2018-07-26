@@ -39,31 +39,17 @@
       "scope": [
         "public_profile",
         "email"
-      ],
-      "profileFields": [
-        "id",
-        "displayName",
-        "first_name",
-        "last_name",
-        "email",
-        "gender",
-        "profileUrl",
-        "birthday",
-        "picture",
-        "permissions"
       ]
     },
     "spotify": {
       "clientID": "84f3966b6522451686c303f5900fc12b",
       "clientSecret": "e5588a2f50134b7ab9c350d679460916",
-      "successRedirect": "/",
-      "scope": [
-        "user-read-private",
-        "user-read-email",
-        "streaming",
-        "playlist-read-collaborative",
-        "playlist-read-private"
-      ]
+      "scopes": [
+        "user-read-private", 
+        "user-read-email", 
+        "playlist-read", 
+        "playlist-read-private", 
+        "streaming"]
     },
     "cookie": {
       "enabled": true,

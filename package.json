@@ -1,7 +1,7 @@
 {
   "name": "juxer-server",
   "description": "juxer backend",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "homepage": "",
   "main": "src",
   "keywords": [
@@ -24,14 +24,14 @@
   "scripts": {
     "test": "npm run eslint && npm run mocha",
     "eslint": "eslint src/. test/. --config .eslintrc.json",
-    "start": "node src/",
+    "start": "node src/index.js",
     "mocha": "mocha test/ --recursive --exit"
   },
   "dependencies": {
     "@feathersjs/authentication": "^2.1.5",
     "@feathersjs/authentication-jwt": "^2.0.1",
     "@feathersjs/authentication-local": "^1.2.1",
-    "@feathersjs/authentication-oauth2": "^1.0.3",
+    "@feathersjs/authentication-oauth2": "^1.1.0",
     "@feathersjs/configuration": "^1.0.2",
     "@feathersjs/errors": "^3.3.0",
     "@feathersjs/express": "^1.2.2",
@@ -39,6 +39,7 @@
     "@feathersjs/socketio": "^3.2.1",
     "compression": "^1.7.2",
     "cors": "^2.8.4",
+    "express": "^4.16.2",
     "feathers-mongoose": "^6.1.1",
     "helmet": "^3.12.1",
     "mongoose": "^5.1.1",
