@@ -24,8 +24,9 @@
   "scripts": {
     "test": "npm run eslint && npm run mocha",
     "eslint": "eslint src/. test/. --config .eslintrc.json",
-    "start": "node src/index.js",
-    "mocha": "mocha test/ --recursive --exit"
+    "start": "node src/index.js && node src/spotify-server.js",
+    "mocha": "mocha test/ --recursive --exit",
+    "install": "npm install"
   },
   "dependencies": {
     "@feathersjs/authentication": "^2.1.5",
