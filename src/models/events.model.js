@@ -15,7 +15,7 @@ module.exports = function (app) {
       }
     ],
     name: { type: String, required: true },
-    number: { type: Number, required: true },
+    secret: { type: String, required: true, unique: true },
   }, {
     timestamps: true
   });

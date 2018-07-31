@@ -6,7 +6,6 @@ module.exports = function (app) {
   const mongooseClient = app.get('mongooseClient');
   const { Schema } = mongooseClient;
   const playlists = new Schema({
-    name: { type: String, required: true },
     url: { type: String, required: true },
     startDate: { type: Date },
     endDate: { type: Date },
