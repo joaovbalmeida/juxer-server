@@ -24,7 +24,22 @@ module.exports = function (app) {
   const service = app.service('events');
 
   service.on('created', createChannel);
-  service.publish('created', data => app.channel(`rooms/${data._id}`).send(data));
+
+  service.publish('patched', (data, context) => {
+
+    if (!data.active && data.user === context.params.user._id) {
+      app.channel(`rooms/${data._id}`).send(data);
+      app.channel(`rooms/${data._id}`).connections.forEach((connection) => {
+        app.channel(`rooms/${data._id}`).leave(connection);
+      });
+    } else {
+      app.channel(`rooms/${data._id}`).send(data);
+    }
+  });
+
+  service.publish('updated', (data) => {
+    app.channel(`rooms/${data._id}`).send(data);
+  });
 
   service.hooks(hooks);
 };

@@ -8,6 +8,7 @@ module.exports = function (app) {
   const events = new Schema({
     user: { type: Schema.Types.ObjectId, ref: 'users', required: true },
     playlists: [{ type: Schema.Types.ObjectId, ref: 'playlists' }],
+    guests: [{ type: Schema.Types.ObjectId, ref: 'users' }],
     queue: [
       {
         uri: { type: String, required: true },
@@ -16,6 +17,7 @@ module.exports = function (app) {
     ],
     name: { type: String, required: true },
     secret: { type: String, required: true, unique: true },
+    active: { type: Boolean, required: true },
   }, {
     timestamps: true
   });

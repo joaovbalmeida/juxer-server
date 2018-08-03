@@ -34,6 +34,6 @@ module.exports = function (app) {
       remove: [
         authentication.hooks.authenticate('jwt')
       ]
-    }
+    },
   });
 };
