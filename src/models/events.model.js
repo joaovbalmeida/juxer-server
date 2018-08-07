@@ -5,16 +5,34 @@
 module.exports = function (app) {
   const mongooseClient = app.get('mongooseClient');
   const { Schema } = mongooseClient;
+
+  const tracks = new Schema({
+    uri: { type: String, required: true },
+    owner: { type: String },
+    name: { type: String, required: true },
+    artist: { type: String, required: true },
+    album: { type: String, required: true },
+    cover: { type: String, required: true },
+  }, {
+    timestamps: true
+  });
+
+  const playlists = new Schema({
+    url: { type: String, required: true },
+    startDate: { type: Date },
+    endDate: { type: Date },
+    name: { type: String, required: true },
+    image: { type: String, required: true },
+    tracks: { type: String, required: true },
+  }, {
+    timestamps: true
+  });
+
   const events = new Schema({
     user: { type: Schema.Types.ObjectId, ref: 'users', required: true },
-    playlists: [{ type: Schema.Types.ObjectId, ref: 'playlists' }],
+    playlists: [playlists],
     guests: [{ type: Schema.Types.ObjectId, ref: 'users' }],
-    queue: [
-      {
-        uri: { type: String, required: true },
-        owner: { type: Schema.Types.ObjectId, ref: 'users', required: false },
-      }
-    ],
+    queue: [tracks],
     name: { type: String, required: true },
     secret: { type: String, required: true, unique: true },
     active: { type: Boolean, required: true },

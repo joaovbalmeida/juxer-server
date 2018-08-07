@@ -15,7 +15,7 @@ module.exports = {
     get: [],
     create: [ paramsFromClient('user'), associateCurrentUser({ as: 'user' }) ],
     update: [ restrictToOwner({ ownerField: 'user' }) ],
-    patch: [ restrictToEventOwner() ],
+    patch: [ paramsFromClient('user'), restrictToEventOwner() ],
     remove: [ restrictToOwner({ ownerField: 'user' }) ]
   },
 
