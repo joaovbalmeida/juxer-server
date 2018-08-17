@@ -36,6 +36,7 @@ module.exports = function (app) {
     name: { type: String, required: true },
     secret: { type: String, required: true, unique: true },
     active: { type: Boolean, required: true },
+    index: { type: Number, default: 0 }
   }, {
     timestamps: true
   });
