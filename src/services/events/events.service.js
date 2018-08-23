@@ -18,7 +18,15 @@ module.exports = function (app) {
   };
 
   const updateChannel = (event, context) => {
-    if ((event.user.toString() === context.params.user._id.toString()) && event.active) {
+    if (
+      (
+        event.user.toString() === context.params.user._id.toString()
+        ||
+        event.guests.includes(context.params.user._id.toString())
+      )
+      &&
+      event.active
+    ) {
       app.channel(`rooms/${event._id}`).join(context.params.connection);
     }
   };
@@ -30,7 +38,6 @@ module.exports = function (app) {
   const service = app.service('events');
 
   service.on('created', createChannel);
-
   service.on('patched', updateChannel);
 
   service.publish('patched', (data, context) => {
