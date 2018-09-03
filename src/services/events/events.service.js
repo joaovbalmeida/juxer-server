@@ -22,7 +22,7 @@ module.exports = function (app) {
       (
         event.user.toString() === context.params.user._id.toString()
         ||
-        event.guests.includes(context.params.user._id.toString())
+        event.guests.toString().includes(context.params.user._id.toString())
       )
       &&
       event.active

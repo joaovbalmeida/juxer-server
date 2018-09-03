@@ -24,6 +24,7 @@ module.exports = function (app) {
     name: { type: String, required: true },
     image: { type: String, required: true },
     tracks: { type: String, required: true },
+    songs: [tracks],
   }, {
     timestamps: true
   });
