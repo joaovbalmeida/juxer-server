@@ -23,8 +23,8 @@ module.exports = function (app) {
     endDate: { type: Date },
     name: { type: String, required: true },
     image: { type: String, required: true },
-    tracks: { type: String, required: true },
-    songs: [tracks],
+    total: { type: String, required: true },
+    tracks: [tracks],
   }, {
     timestamps: true
   });
