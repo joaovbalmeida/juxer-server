@@ -5,6 +5,8 @@ const {
   restrictToOwner,
 } = require('feathers-authentication-hooks');
 
+const populateEvent = require('../../hooks/populate-event');
+
 module.exports = {
   before: {
     all: [ authenticate('jwt') ],
@@ -20,7 +22,7 @@ module.exports = {
     all: [],
     find: [],
     get: [],
-    create: [],
+    create: [populateEvent()],
     update: [],
     patch: [],
     remove: []
