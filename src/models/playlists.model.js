@@ -15,7 +15,7 @@ module.exports = function (app) {
   });
 
   const playlists = new Schema({
-    user: { type: Schema.Types.ObjectId, ref: 'users', required: true },
+    event: { type: Schema.Types.ObjectId, ref: 'events', required: true },
     url: { type: String, required: true },
     startDate: { type: Date },
     endDate: { type: Date },
