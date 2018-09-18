@@ -7,7 +7,7 @@ module.exports = function (app) {
   const { Schema } = mongooseClient;
 
   const track = new Schema({
-    uri: { type: String, required: true },
+    uri: { type: String, required: true, unique: true },
     owner: { type: String },
     name: { type: String, required: true },
     artist: { type: String, required: true },
@@ -17,12 +17,13 @@ module.exports = function (app) {
 
   const events = new Schema({
     user: { type: Schema.Types.ObjectId, ref: 'users', required: true },
-    playlists: [{ type: Schema.Types.ObjectId, ref: 'playlists' }],
-    guests: [{ type: Schema.Types.ObjectId, ref: 'users' }],
+    playlists: [{ type: Schema.Types.ObjectId, ref: 'playlists', unique: true }],
+    guests: [{ type: Schema.Types.ObjectId, ref: 'users', unique: true }],
     queue: [track],
     name: { type: String, required: true },
     secret: { type: String, required: true, unique: true },
     active: { type: Boolean, required: true },
+    limit: { type: Number },
     index: { type: Number, default: 0 }
   }, {
     timestamps: true

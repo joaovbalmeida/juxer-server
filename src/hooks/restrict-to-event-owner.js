@@ -6,8 +6,18 @@ module.exports = function () {
 
     return context.service.get(context.id).then((result) => {
       if (
-        (!data.name && !data.active && !data.secret && !data.user && !data.playlists && !data.index)
-      ) return context;
+        (
+          !data.name &&
+          !data.active &&
+          !data.secret &&
+          !data.user &&
+          !data.playlists &&
+          !data.index &&
+          !data.limit
+        )
+      ) {
+        return context;
+      } 
 
       if (context.params.user._id.toString() === result.user.toString()) return context;
 
