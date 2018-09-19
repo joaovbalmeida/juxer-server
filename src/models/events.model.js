@@ -7,7 +7,7 @@ module.exports = function (app) {
   const { Schema } = mongooseClient;
 
   const track = new Schema({
-    uri: { type: String, required: true, unique: true },
+    uri: { type: String, required: true },
     owner: { type: String },
     name: { type: String, required: true },
     artist: { type: String, required: true },
