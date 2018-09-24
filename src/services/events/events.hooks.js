@@ -7,12 +7,14 @@ const {
 
 const restrictToEventOwner = require('../../hooks/restrict-to-event-owner');
 
+const updateChannel = require('../../hooks/update-channel');
+const createChannel = require('../../hooks/create-channel');
 
 module.exports = {
   before: {
     all: [ authenticate('jwt') ],
     find: [],
-    get: [],
+    get: [ paramsFromClient('user', 'server') ],
     create: [ paramsFromClient('user'), associateCurrentUser({ as: 'user' }) ],
     update: [ restrictToOwner({ ownerField: 'user' }) ],
     patch: [ paramsFromClient('user'), restrictToEventOwner() ],
@@ -22,10 +24,10 @@ module.exports = {
   after: {
     all: [],
     find: [],
-    get: [],
-    create: [],
-    update: [],
-    patch: [],
+    get: [updateChannel()],
+    create: [createChannel()],
+    update: [updateChannel()],
+    patch: [updateChannel()],
     remove: []
   },
 

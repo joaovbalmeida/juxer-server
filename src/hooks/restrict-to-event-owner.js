@@ -1,10 +1,14 @@
+const { paramsForServer } = require('feathers-hooks-common');
 const errors = require('@feathersjs/errors');
 
 module.exports = function () {
   return async context => {
     const data = context.data;
-
-    return context.service.get(context.id).then((result) => {
+    
+    return context.app.service('events').get(
+      context.id,
+      paramsForServer({ user: context.params.user, server: true }),
+    ).then((result) => {
       if (
         (
           !data.name &&
