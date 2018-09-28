@@ -2,12 +2,12 @@
 const logger = require('winston');
 const app = require('./app');
 const port = app.get('port');
-const sptPort = app.get('sptPort');
-const server = app.listen(port);
+const port2 = app.get('port2');
+const server = app.listen(process.env.PORT2 || port);
 
 // Spotify Oauth
 const sptApp = require('./spotify-server');
-sptApp.listen(sptPort, () => logger.info('Spotify Oauth app listening on port 3000!'));
+sptApp.listen(process.env.PORT || port2, () => logger.info('Spotify Oauth app listening on port 3000!'));
 
 process.on('unhandledRejection', (reason, p) =>
   logger.error('Unhandled Rejection at: Promise ', p, reason)

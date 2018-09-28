@@ -1,7 +1,7 @@
 {
   "host": "juxer.herokuapp.com",
   "port": 3030,
-  "sptPort": 3060,
+  "port2": 3060,
   "public": "../public/",
   "paginate": {
     "default": 100,
