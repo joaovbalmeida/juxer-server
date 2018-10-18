@@ -18,7 +18,7 @@ module.exports = function (app) {
   const events = new Schema({
     user: { type: Schema.Types.ObjectId, ref: 'users', required: true },
     playlists: [{ type: Schema.Types.ObjectId, ref: 'playlists', unique: true }],
-    guests: [{ type: Schema.Types.ObjectId, ref: 'users', unique: true }],
+    guests: [{ type: Schema.Types.ObjectId, ref: 'users' }],
     queue: [track],
     name: { type: String, required: true },
     secret: { type: String, required: true, unique: true },
